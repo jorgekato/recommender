@@ -3,14 +3,12 @@
  */
 package br.com.jkato;
 
-import java.io.File;
 import java.io.IOException;
 
 import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.eval.RecommenderBuilder;
 import org.apache.mahout.cf.taste.eval.RecommenderEvaluator;
 import org.apache.mahout.cf.taste.impl.eval.AverageAbsoluteDifferenceRecommenderEvaluator;
-import org.apache.mahout.cf.taste.impl.model.file.FileDataModel;
 import org.apache.mahout.cf.taste.model.DataModel;
 import org.apache.mahout.common.RandomUtils;
 
@@ -30,16 +28,14 @@ import org.apache.mahout.common.RandomUtils;
 public class Avaliador {
 
     public static void main ( String[] args ) throws TasteException, IOException {
-File file = new File("dados.csv");//cria arquivo
         
         RandomUtils.useTestSeed();
-
-        DataModel model = new FileDataModel( file );//le o modelo
+        DataModel cursos = new Recomendador().getModeloCursos();
         
         RecommenderEvaluator evaluator = new AverageAbsoluteDifferenceRecommenderEvaluator();
         
-        RecommenderBuilder builder = new RecomendadorDeProdutosBuilder();
-        double error = evaluator.evaluate( builder , null , model , 0.9 , 1.0 );
+        RecommenderBuilder builder = new RecomendadorBuilder();
+        double error = evaluator.evaluate( builder , null , cursos , 0.9 , 1.0 );
         System.out.println( error );
     }
 

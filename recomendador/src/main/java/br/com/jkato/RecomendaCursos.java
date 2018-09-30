@@ -15,28 +15,26 @@ import org.apache.mahout.cf.taste.recommender.Recommender;
  * DOCUMENTAÇÃO DA CLASSE <br>
  * ---------------------- <br>
  * FINALIDADE: <br>
- * Classe principal que realiza uma recomendação com base nos dados. <br>
+ * TODO Definir documentação da classe. <br>
  * <br>
  * HISTÓRICO DE DESENVOLVIMENTO: <br>
- * 29 de set de 2018 - @author jorge - Primeira versão da classe. <br>
+ * 30 de set de 2018 - @author jorge - Primeira versão da classe. <br>
  *<br>
  *<br>
  * LISTA DE CLASSES INTERNAS: <br>
  */
 
-public class RecomendaProdutos {
-    
+public class RecomendaCursos {
+
     public static void main ( String[] args ) throws IOException, TasteException {
         
-        DataModel produtos = new Recomendador().getModeloProdutos();
+        DataModel cursos = new Recomendador().getModeloCursos();
         
-        Recommender recommender = new RecomendadorBuilder().buildRecommender( produtos );
+        Recommender recommender = new RecomendadorBuilder().buildRecommender( cursos );
         
-        List < RecommendedItem > recommendations = recommender.recommend( 2 , 3 );
+        List < RecommendedItem > recommendations = recommender.recommend( 15 , 10 );//(usuarioID, qtd de recomendações)
         for ( RecommendedItem recommendation : recommendations ) {
             System.out.println( recommendation );
         }
-        
     }
-
 }

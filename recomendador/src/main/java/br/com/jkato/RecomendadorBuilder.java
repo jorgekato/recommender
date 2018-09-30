@@ -27,7 +27,7 @@ import org.apache.mahout.cf.taste.similarity.UserSimilarity;
  * LISTA DE CLASSES INTERNAS: <br>
  */
 
-public class RecomendadorDeProdutosBuilder implements RecommenderBuilder {
+public class RecomendadorBuilder implements RecommenderBuilder {
 
     /**
      * TODO Descrição do Método
